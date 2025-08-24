@@ -31,6 +31,14 @@ class TodoController:
         except ValueError:
             print("Invalid task ID.")
 
+    def unmark_task_completed(self, task_id):
+        try:
+            task_id = int(task_id)
+            self.todo_service.unmark_task_completed(task_id)
+            print(f"Task {task_id} unmarked as completed.")
+        except ValueError:
+            print("Invalid task ID.")
+
     def save_tasks(self):
         self.todo_service.save_tasks()
 

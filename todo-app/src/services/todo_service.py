@@ -39,3 +39,10 @@ class TodoService:
                 self.tasks = json.load(f)
         except FileNotFoundError:
             self.tasks = []
+
+    def unmark_task_completed(self, task_id):
+        for task in self.tasks:
+            if task['id'] == task_id:
+                task['completed'] = False
+                return task
+        return None
