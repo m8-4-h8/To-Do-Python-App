@@ -1,3 +1,6 @@
+import json
+
+
 class TodoService:
     def __init__(self):
         self.tasks = []
@@ -25,3 +28,14 @@ class TodoService:
                 task['completed'] = True
                 return task
         return None
+    
+    def save_tasks(self):
+        with open("tasks.json", "w") as f:
+            json.dump(self.tasks, f)
+
+    def load_tasks(self):
+        try:
+            with open("tasks.json", "r") as f:
+                self.tasks = json.load(f)
+        except FileNotFoundError:
+            self.tasks = []
